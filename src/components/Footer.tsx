@@ -8,7 +8,7 @@ export function Footer() {
         <div className="text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <GraduationCap className="h-8 w-8 text-cyan-400" />
-            <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Testing Professor</span>
+            <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Isha Training Solutions</span>
           </div>
           
           <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
@@ -23,7 +23,7 @@ export function Footer() {
           </div>
           
           <div className="mt-8 pt-8 border-t border-gray-700/50 text-center text-gray-400">
-            <p>&copy; 2025 Testing Professor. All rights reserved.</p>
+            <p>&copy; 2025 Isha Training Solutions. All rights reserved.</p>
           </div>
         </div>
       </div>
