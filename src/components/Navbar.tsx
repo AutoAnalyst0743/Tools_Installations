@@ -10,7 +10,7 @@ export function Navbar() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-2">
             <GraduationCap className="h-8 w-8 text-blue-600" />
-            <span className="text-xl font-bold text-gray-900">Testing Professor</span>
+            <span className="text-xl font-bold text-gray-900">Isha Training Solutions</span>
           </div>
           
           {/* Desktop Menu */}
