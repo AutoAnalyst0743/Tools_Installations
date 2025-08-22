@@ -1,4 +1,4 @@
-import { DivideIcon as LucideIcon, Coffee, GitBranch, Eclipse, Lightbulb, Settings, Package, Cloud, Container, Github, UserPlus } from 'lucide-react';
+import { DivideIcon as LucideIcon, Coffee, GitBranch, Eclipse, Lightbulb, Settings, Package, Cloud, Container, Github, UserPlus, Database, Server, HardDrive, Layers } from 'lucide-react';
 
 export interface InstallationStep {
   title: string;
@@ -1411,6 +1411,401 @@ export const guides: GuideData[] = [
       {
         issue: 'Built images consume too much disk space',
         solution: 'Implement image cleanup in pipeline, use multi-stage builds, and configure Docker system prune in post-build actions.'
+      }
+    ]
+  },
+  {
+    id: 'mysql',
+    title: 'MySQL Database',
+    description: 'Install MySQL database server for data storage and management',
+    icon: Database,
+    bgColor: 'bg-gradient-to-br from-orange-100 to-red-100',
+    iconColor: 'text-orange-600',
+    difficulty: 'Intermediate',
+    estimatedTime: '20-30 minutes',
+    prerequisites: [
+      'Administrator privileges on your computer',
+      'At least 2GB free disk space'
+    ],
+    steps: {
+      windows: [
+        {
+          title: 'Download MySQL Installer',
+          description: 'Visit the **[MySQL Downloads page](https://dev.mysql.com/downloads/installer/)** and download **MySQL Installer for Windows**. Choose the **mysql-installer-web-community** version.',
+          note: 'The web installer is smaller and downloads components as needed.'
+        },
+        {
+          title: 'Run the Installer',
+          description: 'Double-click the downloaded installer file and choose **Full** installation type for complete MySQL suite including MySQL Server, MySQL Workbench, and other tools.',
+          note: 'You may need to install Microsoft Visual C++ Redistributable if prompted.'
+        },
+        {
+          title: 'Configure MySQL Server',
+          description: 'During configuration, choose **Development Computer** for server configuration type. Set a strong root password and remember it. Choose **MySQL Server as Windows Service** and start it automatically.',
+          note: 'Write down your root password - you will need it to connect to MySQL.'
+        },
+        {
+          title: 'Complete Installation',
+          description: 'Click **Execute** to apply the configuration. Once complete, test the connection using the provided credentials. MySQL Workbench will also be installed for database management.',
+          note: 'MySQL Server will start automatically with Windows.'
+        }
+      ],
+      macos: [
+        {
+          title: 'Download MySQL for macOS',
+          description: 'Visit **[MySQL Downloads](https://dev.mysql.com/downloads/mysql/)** and download the MySQL Community Server DMG file for macOS.',
+          note: 'Choose the version compatible with your macOS version.'
+        },
+        {
+          title: 'Install MySQL',
+          description: 'Open the downloaded DMG file and run the MySQL installer package. Follow the installation wizard and note the temporary root password provided.',
+          note: 'The installer will show a temporary password - copy it immediately.'
+        },
+        {
+          title: 'Start MySQL Server',
+          description: 'Go to **System Preferences > MySQL** and start the MySQL server. You can also configure it to start automatically at boot.',
+          note: 'MySQL will be available at localhost:3306.'
+        },
+        {
+          title: 'Install MySQL Workbench',
+          description: 'Download and install **[MySQL Workbench](https://dev.mysql.com/downloads/workbench/)** for database management. Connect using root user and the password you set.',
+          note: 'You may need to change the root password on first login.'
+        }
+      ],
+      linux: [
+        {
+          title: 'Update Package Repository',
+          description: 'Update your package manager repository to ensure you get the latest MySQL version.',
+          code: 'sudo apt update'
+        },
+        {
+          title: 'Install MySQL Server',
+          description: 'Install MySQL server package. During installation, you will be prompted to set a root password.',
+          code: 'sudo apt install mysql-server',
+          note: 'Choose a strong password for the MySQL root user.'
+        },
+        {
+          title: 'Secure MySQL Installation',
+          description: 'Run the security script to improve MySQL security by removing test databases and anonymous users.',
+          code: 'sudo mysql_secure_installation',
+          note: 'Answer the prompts to configure security settings.'
+        },
+        {
+          title: 'Start and Enable MySQL',
+          description: 'Start MySQL service and enable it to start automatically on boot.',
+          code: 'sudo systemctl start mysql\nsudo systemctl enable mysql',
+          note: 'MySQL will now start automatically when the system boots.'
+        }
+      ]
+    },
+    troubleshooting: [
+      {
+        issue: "Can't connect to MySQL server",
+        solution: "Check if MySQL service is running. On Windows, check Services panel. On Linux/Mac, use 'sudo systemctl status mysql' or check System Preferences."
+      },
+      {
+        issue: "Forgot MySQL root password",
+        solution: "You can reset the root password by stopping MySQL service and starting it with --skip-grant-tables option, then updating the password."
+      }
+    ]
+  },
+  {
+    id: 'ssms',
+    title: 'SQL Server Management Studio (SSMS)',
+    description: 'Install SSMS for managing Microsoft SQL Server databases',
+    icon: Server,
+    bgColor: 'bg-gradient-to-br from-blue-100 to-indigo-100',
+    iconColor: 'text-blue-600',
+    difficulty: 'Beginner',
+    estimatedTime: '15-20 minutes',
+    prerequisites: [
+      'Windows operating system (SSMS is Windows-only)',
+      'At least 2GB free disk space',
+      '.NET Framework 4.7.2 or later'
+    ],
+    steps: {
+      windows: [
+        {
+          title: 'Download SSMS',
+          description: 'Visit the **[SQL Server Management Studio download page](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms)** and click **Download SQL Server Management Studio (SSMS)**.',
+          note: 'SSMS is free and regularly updated by Microsoft.'
+        },
+        {
+          title: 'Run the Installer',
+          description: 'Double-click the downloaded **SSMS-Setup-ENU.exe** file to start the installation. Click **Install** to begin the installation process.',
+          note: 'The installer will automatically download and install required components.'
+        },
+        {
+          title: 'Wait for Installation',
+          description: 'The installation process will download and install SSMS components. This may take 10-15 minutes depending on your internet connection.',
+          note: 'Do not close the installer window during this process.'
+        },
+        {
+          title: 'Complete Installation',
+          description: 'Once installation is complete, click **Close**. You can now launch SSMS from the Start menu or desktop shortcut.',
+          note: 'SSMS can connect to SQL Server instances locally or remotely.'
+        },
+        {
+          title: 'First Launch and Connection',
+          description: 'Launch SSMS and connect to a SQL Server instance. For local development, use **localhost** or **(local)** as server name with **Windows Authentication**.',
+          note: 'You need a SQL Server instance to connect to. Consider installing SQL Server Express for development.'
+        }
+      ]
+    },
+    troubleshooting: [
+      {
+        issue: "SSMS won't start after installation",
+        solution: "Ensure you have .NET Framework 4.7.2 or later installed. Restart your computer and try launching SSMS again."
+      },
+      {
+        issue: "Cannot connect to SQL Server",
+        solution: "Make sure SQL Server service is running. Check SQL Server Configuration Manager to enable TCP/IP protocol if connecting remotely."
+      }
+    ]
+  },
+  {
+    id: 'oracle',
+    title: 'Oracle Database Tools',
+    description: 'Install Oracle Database and SQL Developer for enterprise database management',
+    icon: HardDrive,
+    bgColor: 'bg-gradient-to-br from-red-100 to-orange-100',
+    iconColor: 'text-red-600',
+    difficulty: 'Advanced',
+    estimatedTime: '45-60 minutes',
+    prerequisites: [
+      'At least 8GB RAM (16GB recommended)',
+      'At least 10GB free disk space',
+      'Administrator privileges',
+      'Oracle account (free registration required)'
+    ],
+    steps: {
+      windows: [
+        {
+          title: 'Create Oracle Account',
+          description: 'Visit **[Oracle.com](https://www.oracle.com)** and create a free Oracle account. You will need this to download Oracle software.',
+          note: 'Oracle requires registration for software downloads.'
+        },
+        {
+          title: 'Download Oracle Database Express Edition',
+          description: 'Go to **[Oracle Database XE Downloads](https://www.oracle.com/database/technologies/xe-downloads.html)** and download **Oracle Database 21c Express Edition** for Windows.',
+          note: 'XE is free and suitable for development and learning.'
+        },
+        {
+          title: 'Install Oracle Database XE',
+          description: 'Run the downloaded installer as Administrator. Set a password for the **SYS** and **SYSTEM** accounts. Choose default settings for ports and services.',
+          note: 'Remember the password - you will need it to connect to the database.'
+        },
+        {
+          title: 'Download SQL Developer',
+          description: 'Download **[Oracle SQL Developer](https://www.oracle.com/tools/downloads/sqldev-downloads.html)**. Choose the version with JDK included if you do not have Java installed.',
+          note: 'SQL Developer is the primary tool for Oracle database development.'
+        },
+        {
+          title: 'Install and Configure SQL Developer',
+          description: 'Extract SQL Developer to a folder and run **sqldeveloper.exe**. Create a new connection using **localhost:1521** as hostname, **XE** as service name, and **SYSTEM** as username.',
+          note: 'Use the password you set during Oracle XE installation.'
+        }
+      ],
+      macos: [
+        {
+          title: 'Download Oracle Database',
+          description: 'Oracle Database is not natively available for macOS. Consider using **Docker** to run Oracle Database in a container, or use **Oracle Cloud** free tier.',
+          note: 'Docker provides the easiest way to run Oracle on macOS.'
+        },
+        {
+          title: 'Install Docker Desktop',
+          description: 'Download and install **[Docker Desktop for Mac](https://www.docker.com/products/docker-desktop)**. This will allow you to run Oracle Database in a container.',
+          note: 'Docker Desktop includes everything needed to run containers.'
+        },
+        {
+          title: 'Pull Oracle Database Image',
+          description: 'Open Terminal and pull the Oracle Database Express Edition image from Docker Hub.',
+          code: 'docker pull gvenzl/oracle-xe:latest',
+          note: 'This is a community-maintained Oracle XE image.'
+        },
+        {
+          title: 'Run Oracle Database Container',
+          description: 'Start Oracle Database in a Docker container with the following command.',
+          code: 'docker run -d -p 1521:1521 -e ORACLE_PASSWORD=mypassword --name oracle-xe gvenzl/oracle-xe:latest',
+          note: 'Replace "mypassword" with your desired password.'
+        },
+        {
+          title: 'Download SQL Developer',
+          description: 'Download **[Oracle SQL Developer](https://www.oracle.com/tools/downloads/sqldev-downloads.html)** for macOS. Extract and run the application.',
+          note: 'Connect using localhost:1521, service name XE, username SYSTEM.'
+        }
+      ],
+      linux: [
+        {
+          title: 'Download Oracle Database XE',
+          description: 'Visit **[Oracle Database XE Downloads](https://www.oracle.com/database/technologies/xe-downloads.html)** and download the RPM or DEB package for your Linux distribution.',
+          note: 'Choose the package format that matches your Linux distribution.'
+        },
+        {
+          title: 'Install Oracle Database XE',
+          description: 'Install the downloaded package using your package manager. For Ubuntu/Debian use dpkg, for RHEL/CentOS use rpm.',
+          code: 'sudo dpkg -i oracle-database-xe-*.deb\n# or for RPM-based systems:\n# sudo rpm -ivh oracle-database-xe-*.rpm',
+          note: 'The installation may take several minutes.'
+        },
+        {
+          title: 'Configure Oracle Database',
+          description: 'Run the configuration script to set up the database and set passwords for SYS and SYSTEM accounts.',
+          code: 'sudo /etc/init.d/oracle-xe-21c configure',
+          note: 'Follow the prompts to set passwords and configure the database.'
+        },
+        {
+          title: 'Set Environment Variables',
+          description: 'Add Oracle environment variables to your shell profile for easy access to Oracle tools.',
+          code: 'echo "source /opt/oracle/product/21c/dbhomeXE/bin/oracle_env.sh" >> ~/.bashrc\nsource ~/.bashrc',
+          note: 'This sets up PATH and other Oracle environment variables.'
+        },
+        {
+          title: 'Install SQL Developer',
+          description: 'Download and extract **[Oracle SQL Developer](https://www.oracle.com/tools/downloads/sqldev-downloads.html)** for Linux. Run sqldeveloper.sh to start the application.',
+          note: 'You may need to install Java if not already present.'
+        }
+      ]
+    },
+    troubleshooting: [
+      {
+        issue: "Oracle Database service won't start",
+        solution: "Check if you have enough memory (at least 1GB available). Restart the Oracle service or reboot your computer."
+      },
+      {
+        issue: "Cannot connect to Oracle Database",
+        solution: "Verify the Oracle listener is running. Check if port 1521 is open and not blocked by firewall. Ensure the service name is correct (usually XE for Express Edition)."
+      },
+      {
+        issue: "SQL Developer won't start",
+        solution: "Ensure you have Java installed. Download the SQL Developer version that includes JDK if you don't have Java on your system."
+      }
+    ]
+  },
+  {
+    id: 'mongodb',
+    title: 'MongoDB Database',
+    description: 'Install MongoDB NoSQL database and MongoDB Compass for document-based data storage',
+    icon: Layers,
+    bgColor: 'bg-gradient-to-br from-green-100 to-emerald-100',
+    iconColor: 'text-green-600',
+    difficulty: 'Intermediate',
+    estimatedTime: '25-35 minutes',
+    prerequisites: [
+      'At least 4GB RAM',
+      'At least 3GB free disk space',
+      'Administrator privileges'
+    ],
+    steps: {
+      windows: [
+        {
+          title: 'Download MongoDB Community Server',
+          description: 'Visit **[MongoDB Download Center](https://www.mongodb.com/try/download/community)** and download **MongoDB Community Server** for Windows. Choose the MSI installer.',
+          note: 'The Community version is free and suitable for development and production.'
+        },
+        {
+          title: 'Run MongoDB Installer',
+          description: 'Double-click the downloaded MSI file and choose **Complete** installation. Check **Install MongoDB as a Service** and **Run service as Network Service user**.',
+          note: 'Installing as a service allows MongoDB to start automatically with Windows.'
+        },
+        {
+          title: 'Install MongoDB Compass',
+          description: 'During installation, ensure **Install MongoDB Compass** is checked. This will install the graphical interface for MongoDB management.',
+          note: 'MongoDB Compass provides a user-friendly interface for database operations.'
+        },
+        {
+          title: 'Complete Installation and Verify',
+          description: 'After installation, MongoDB service should start automatically. Open Command Prompt and test the connection.',
+          code: 'mongo --version',
+          note: 'If the command is not recognized, add MongoDB bin directory to your PATH environment variable.'
+        },
+        {
+          title: 'Connect with MongoDB Compass',
+          description: 'Launch MongoDB Compass and connect to **mongodb://localhost:27017**. You should see the default databases and can start creating your own.',
+          note: 'The default connection string works for local MongoDB installations.'
+        }
+      ],
+      macos: [
+        {
+          title: 'Install Homebrew (if not installed)',
+          description: 'If you do not have Homebrew installed, install it first by running the following command in Terminal.',
+          code: '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"',
+          note: 'Homebrew is the easiest way to install MongoDB on macOS.'
+        },
+        {
+          title: 'Add MongoDB Homebrew Tap',
+          description: 'Add the MongoDB Homebrew tap to access MongoDB formulas.',
+          code: 'brew tap mongodb/brew',
+          note: 'This adds the official MongoDB repository to Homebrew.'
+        },
+        {
+          title: 'Install MongoDB Community Edition',
+          description: 'Install MongoDB using Homebrew. This will install the latest stable version.',
+          code: 'brew install mongodb-community',
+          note: 'This installs MongoDB server, tools, and creates necessary directories.'
+        },
+        {
+          title: 'Start MongoDB Service',
+          description: 'Start MongoDB as a service using Homebrew services.',
+          code: 'brew services start mongodb/brew/mongodb-community',
+          note: 'MongoDB will now start automatically when you boot your Mac.'
+        },
+        {
+          title: 'Install MongoDB Compass',
+          description: 'Download and install **[MongoDB Compass](https://www.mongodb.com/products/compass)** for macOS. Connect to **mongodb://localhost:27017** to manage your databases.',
+          note: 'Compass provides a graphical interface for MongoDB operations.'
+        }
+      ],
+      linux: [
+        {
+          title: 'Import MongoDB GPG Key',
+          description: 'Import the MongoDB public GPG key to verify package authenticity.',
+          code: 'wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -',
+          note: 'This ensures you are installing authentic MongoDB packages.'
+        },
+        {
+          title: 'Add MongoDB Repository',
+          description: 'Add the MongoDB repository to your package sources list.',
+          code: 'echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list',
+          note: 'Replace "focal" with your Ubuntu version codename if different.'
+        },
+        {
+          title: 'Update Package Database',
+          description: 'Update your local package database to include MongoDB packages.',
+          code: 'sudo apt update',
+          note: 'This refreshes the package list with MongoDB packages.'
+        },
+        {
+          title: 'Install MongoDB',
+          description: 'Install MongoDB Community Edition and its dependencies.',
+          code: 'sudo apt install -y mongodb-org',
+          note: 'This installs MongoDB server, shell, and tools.'
+        },
+        {
+          title: 'Start and Enable MongoDB',
+          description: 'Start MongoDB service and enable it to start automatically on boot.',
+          code: 'sudo systemctl start mongod\nsudo systemctl enable mongod',
+          note: 'MongoDB will now start automatically when the system boots.'
+        },
+        {
+          title: 'Verify Installation',
+          description: 'Test MongoDB installation by connecting to the database.',
+          code: 'mongosh',
+          note: 'This opens the MongoDB shell. Type "exit" to quit.'
+        }
+      ]
+    },
+    troubleshooting: [
+      {
+        issue: "MongoDB service fails to start",
+        solution: "Check if port 27017 is already in use. Ensure you have sufficient disk space and memory. Check MongoDB log files for specific error messages."
+      },
+      {
+        issue: "Cannot connect to MongoDB",
+        solution: "Verify MongoDB service is running using 'sudo systemctl status mongod' on Linux or check Services panel on Windows. Ensure no firewall is blocking port 27017."
+      },
+      {
+        issue: "MongoDB Compass cannot connect",
+        solution: "Check if MongoDB is running on localhost:27017. Try connecting without authentication first. Ensure MongoDB is configured to accept connections."
       }
     ]
   }
