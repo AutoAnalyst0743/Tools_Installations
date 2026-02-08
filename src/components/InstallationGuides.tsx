@@ -1,5 +1,6 @@
 import React from 'react';
 import { GuideData } from '../data/guides';
+import { ArrowRight } from 'lucide-react';
 
 interface InstallationGuidesProps {
   guides: GuideData[];
@@ -8,45 +9,47 @@ interface InstallationGuidesProps {
 
 export function InstallationGuides({ guides, onSelectGuide }: InstallationGuidesProps) {
   return (
-    <section id="guides" className="py-20 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50">
+    <section id="guides" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent mb-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
             Installation Guides
           </h2>
-          <p className="text-xl text-gray-700 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Choose from our comprehensive collection of software installation tutorials
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {guides.map((guide) => (
             <div
               key={guide.id}
-              className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-orange-100 cursor-pointer group hover:-translate-y-2 hover:shadow-orange-300/40"
+              className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-200 border border-gray-200 cursor-pointer group"
               onClick={() => onSelectGuide(guide)}
             >
-              <div className="p-8 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-400/10 to-amber-400/10 rounded-full blur-2xl transform translate-x-16 -translate-y-16"></div>
-                <div className={`w-16 h-16 rounded-2xl mb-6 flex items-center justify-center ${guide.bgColor} shadow-lg relative z-10`}>
-                  <guide.icon className={`h-8 w-8 ${guide.iconColor}`} />
+              <div className="p-6">
+                <div className={`w-14 h-14 rounded-lg mb-4 flex items-center justify-center ${guide.bgColor}`}>
+                  <guide.icon className={`h-7 w-7 ${guide.iconColor}`} />
                 </div>
 
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:bg-gradient-to-r group-hover:from-orange-600 group-hover:to-amber-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300 relative z-10">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors">
                   {guide.title}
                 </h3>
 
-                <p className="text-gray-600 mb-4 leading-relaxed relative z-10">
+                <p className="text-gray-600 text-sm mb-4 line-clamp-2">
                   {guide.description}
                 </p>
 
-                <div className="flex items-center justify-between relative z-10">
-                  <div className="flex items-center space-x-2">
-                    <span className={`px-3 py-1 rounded-full text-sm font-medium shadow-sm ${guide.difficulty === 'Beginner' ? 'bg-gradient-to-r from-green-100 to-emerald-100 text-green-800' : guide.difficulty === 'Intermediate' ? 'bg-gradient-to-r from-yellow-100 to-orange-100 text-yellow-800' : 'bg-gradient-to-r from-red-100 to-pink-100 text-red-800'}`}>
-                      {guide.difficulty}
-                    </span>
-                  </div>
-                  <span className="text-sm text-gray-500 font-medium">{guide.estimatedTime}</span>
+                <div className="flex items-center justify-between text-sm">
+                  <span className={`px-2.5 py-1 rounded-md font-medium ${guide.difficulty === 'Beginner' ? 'bg-green-50 text-green-700' : guide.difficulty === 'Intermediate' ? 'bg-yellow-50 text-yellow-700' : 'bg-red-50 text-red-700'}`}>
+                    {guide.difficulty}
+                  </span>
+                  <span className="text-gray-500">{guide.estimatedTime}</span>
+                </div>
+
+                <div className="mt-4 flex items-center text-orange-600 font-medium text-sm group-hover:text-orange-700">
+                  View Guide
+                  <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
             </div>

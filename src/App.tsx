@@ -10,7 +10,7 @@ function App() {
   const [selectedGuide, setSelectedGuide] = useState<GuideData | null>(null);
 
   return (
-    <div className="min-h-screen bg-orange-50">
+    <div className="min-h-screen bg-white">
       <Navbar />
 
       {selectedGuide ? (
