@@ -24,7 +24,7 @@ export function Footer() {
 
           <div className="flex items-center justify-center space-x-2 text-gray-400 text-sm">
             <span>Made with</span>
-            <Heart className="h-4 w-4 text-orange-500 fill-orange-500" />
+            <Heart className="h-4 w-4 text-amber-500 fill-amber-500" />
             <span>for students worldwide</span>
           </div>
 

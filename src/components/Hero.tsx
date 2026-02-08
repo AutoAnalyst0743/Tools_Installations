@@ -3,7 +3,7 @@ import { BookOpen, Users, Zap } from 'lucide-react';
 
 export function Hero() {
   return (
-    <div className="relative bg-gradient-to-br from-orange-500 to-amber-600 text-white overflow-hidden">
+    <div className="relative bg-gradient-to-br from-amber-400 to-yellow-500 text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="text-center">
           <h1 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
@@ -43,7 +43,7 @@ export function Hero() {
 
           <a
             href="#guides"
-            className="inline-flex items-center bg-white text-orange-600 hover:bg-amber-50 font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-200"
+            className="inline-flex items-center bg-white text-blue-600 hover:bg-blue-50 font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-200"
           >
             Start Learning
           </a>

@@ -37,7 +37,7 @@ export function GuideDetail({ guide, onBack }: GuideDetailProps) {
         <div className="mb-8">
           <button
             onClick={onBack}
-            className="flex items-center text-orange-600 hover:text-orange-700 transition-colors mb-6 font-medium text-sm"
+            className="flex items-center text-blue-600 hover:text-blue-700 transition-colors mb-6 font-medium text-sm"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Guides
@@ -72,7 +72,7 @@ export function GuideDetail({ guide, onBack }: GuideDetailProps) {
                 onClick={() => setSelectedOS(os)}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all text-sm ${
                   selectedOS === os
-                    ? 'bg-orange-600 text-white shadow-sm'
+                    ? 'bg-blue-600 text-white shadow-sm'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
@@ -107,7 +107,7 @@ export function GuideDetail({ guide, onBack }: GuideDetailProps) {
               <div className="p-5">
                 <div className="flex items-start space-x-3">
                   <div className="flex-shrink-0">
-                    <div className="w-7 h-7 bg-orange-600 text-white rounded-full flex items-center justify-center font-semibold text-sm">
+                    <div className="w-7 h-7 bg-blue-600 text-white rounded-full flex items-center justify-center font-semibold text-sm">
                       {index + 1}
                     </div>
                   </div>
@@ -123,7 +123,7 @@ export function GuideDetail({ guide, onBack }: GuideDetailProps) {
                                 href={linkMatch[2]}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-orange-600 hover:text-orange-700 underline"
+                                className="text-blue-600 hover:text-blue-700 underline"
                               >
                                 {linkMatch[1]}
                               </a>
@@ -183,7 +183,7 @@ export function GuideDetail({ guide, onBack }: GuideDetailProps) {
             <h2 className="text-xl font-bold text-gray-900 mb-4">Common Issues & Solutions</h2>
             <div className="space-y-4">
               {guide.troubleshooting.map((item, index) => (
-                <div key={index} className="border-l-4 border-orange-500 pl-4 py-2">
+                <div key={index} className="border-l-4 border-blue-500 pl-4 py-2">
                   <h3 className="font-semibold text-gray-900 text-sm mb-1">{item.issue}</h3>
                   <p className="text-gray-600 text-sm">{item.solution}</p>
                 </div>

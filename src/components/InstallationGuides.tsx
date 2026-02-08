@@ -32,7 +32,7 @@ export function InstallationGuides({ guides, onSelectGuide }: InstallationGuides
                   <guide.icon className={`h-7 w-7 ${guide.iconColor}`} />
                 </div>
 
-                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
                   {guide.title}
                 </h3>
 
@@ -47,7 +47,7 @@ export function InstallationGuides({ guides, onSelectGuide }: InstallationGuides
                   <span className="text-gray-500">{guide.estimatedTime}</span>
                 </div>
 
-                <div className="mt-4 flex items-center text-orange-600 font-medium text-sm group-hover:text-orange-700">
+                <div className="mt-4 flex items-center text-blue-600 font-medium text-sm group-hover:text-blue-700">
                   View Guide
                   <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </div>

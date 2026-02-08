@@ -22,7 +22,7 @@ export function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#guides" className="text-gray-700 hover:text-orange-600 transition-colors text-sm font-medium">
+            <a href="#guides" className="text-gray-700 hover:text-blue-600 transition-colors text-sm font-medium">
               Installation Guides
             </a>
           </div>
@@ -31,7 +31,7 @@ export function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 hover:text-orange-600 transition-colors"
+              className="text-gray-700 hover:text-blue-600 transition-colors"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -44,7 +44,7 @@ export function Navbar() {
             <div className="px-2 pt-2 pb-3 space-y-1">
               <a
                 href="#guides"
-                className="block px-3 py-2 text-gray-700 hover:text-orange-600 transition-colors text-sm font-medium"
+                className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors text-sm font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Installation Guides
