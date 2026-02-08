@@ -10,24 +10,24 @@ function App() {
   const [selectedGuide, setSelectedGuide] = useState<GuideData | null>(null);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-orange-50">
       <Navbar />
-      
+
       {selectedGuide ? (
-        <GuideDetail 
-          guide={selectedGuide} 
-          onBack={() => setSelectedGuide(null)} 
+        <GuideDetail
+          guide={selectedGuide}
+          onBack={() => setSelectedGuide(null)}
         />
       ) : (
         <>
           <Hero />
-          <InstallationGuides 
+          <InstallationGuides
             guides={guides}
             onSelectGuide={setSelectedGuide}
           />
         </>
       )}
-      
+
       <Footer />
     </div>
   );
